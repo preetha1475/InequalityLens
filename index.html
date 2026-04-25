@@ -147,18 +147,9 @@ html { scroll-behavior: smooth; }
 
 /* ===== TOP NAVIGATION BAR ===== */
 .top-bar {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  padding: 10px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  background: rgba(2, 8, 16, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--glass-border);
+  background: transparent;
+  border-bottom: none;
 }
-
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
@@ -172,29 +163,39 @@ html { scroll-behavior: smooth; }
   -webkit-text-fill-color: transparent;
 }
 
+/* ===== RIGHT SIDE VERTICAL NAV ===== */
 .top-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 18px;
+
+  z-index: 1000;
 }
 
+/* Style links */
 .top-nav a {
-  position: relative;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
+  text-transform: uppercase;
   transition: 0.3s ease;
-  padding: 5px 0;
+
+  writing-mode: vertical-rl;   /* makes text vertical */
+  transform: rotate(180deg);   /* fixes upside-down text */
 }
 
+/* Hover effect */
 .top-nav a:hover {
   color: var(--color-mint);
-  text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
-}
-
-/* Animated Underline */
+  text-shadow: 0 0 10px rgba(0,255,204,0.6);
+}/* Animated Underline */
 .top-nav a::after {
   content: "";
   position: absolute;
@@ -509,7 +510,8 @@ html { scroll-behavior: smooth; }
 /* Responsive Setup */
 @media (max-width: 992px) {
   .about-wrapper { grid-template-columns: 1fr; }
-   .top-nav {
+  @media (max-width: 768px) {
+  .top-nav {
     display: flex;
     gap: 12px;
     overflow-x: auto;
@@ -568,7 +570,106 @@ html { scroll-behavior: smooth; }
   opacity: 0;
   transition: 0.4s;
 }
+/* ===== FINAL MOBILE FIX (SAFE - DOES NOT CHANGE DESIGN) ===== */
 
+/* Fix broken media query structure */
+@media (max-width: 992px) {
+  .about-wrapper { grid-template-columns: 1fr; }
+
+  .top-nav {
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .section { padding: 100px 5%; }
+  .hero-left h1 { font-size: 3rem; }
+
+  #chat-window {
+    width: calc(100% - 60px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .section {
+    padding: 80px 20px;
+  }
+
+  #home {
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-text {
+    padding: 20px;
+  }
+
+  /* IMPORTANT: fix card layout conflict */
+  .about-cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .glass-container {
+    height: clamp(300px, 60vh, 800px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .column-cards {
+    grid-template-columns: 1fr;
+  }
+
+  #chat-window {
+    width: 95%;
+    height: 70vh;
+    right: 10px;
+    bottom: 80px;
+  }
+
+  #chatbot-launcher {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
 .card:hover::before {
   opacity: 1;
 }
@@ -813,22 +914,91 @@ img, iframe {
     padding: 80px 20px;
   }
 }
+/* NAV ICON BUTTON */
+#nav-toggle {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: rgba(2, 8, 16, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 2000;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+#nav-toggle span {
+  background: linear-gradient(90deg, #00c6ff, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DROPDOWN MENU */
+#side-nav {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background: rgba(2, 8, 16, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 20px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: 0.3s ease;
+  z-index: 2000;
+}
+
+/* ACTIVE STATE */
+#side-nav.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* LINKS */
+#side-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+#side-nav a:hover {
+  background: rgba(0,255,204,0.15);
+  color: #00ffcc;
+}
 </style>
 </head>
 
 <body>
+<!-- FLOATING NAV ICON -->
+<div id="nav-toggle" onclick="toggleNav()">
+  Inequality<span>Lens</span>
+</div>
 
-<div class="top-bar">
-  <div class="logo">Inequality<span>Lens</span></div>
-  <div class="top-nav">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#dataset">Dataset</a>
-    <a href="#dashboards">Dashboards</a>
-    <a href="#map-analysis">Analysis</a>
-    <a href="#insights">Insights</a> 
-    <a href="#connect">Connect</a>
-  </div>
+<!-- DROPDOWN MENU -->
+<div id="side-nav">
+  <a href="#home" onclick="closeNav()">Home</a>
+  <a href="#about" onclick="closeNav()">About</a>
+  <a href="#dataset" onclick="closeNav()">Dataset</a>
+  <a href="#dashboards" onclick="closeNav()">Dashboards</a>
+  <a href="#map-analysis" onclick="closeNav()">Analysis</a>
+  <a href="#insights" onclick="closeNav()">Insights</a>
+  <a href="#connect" onclick="closeNav()">Connect</a>
 </div>
 
 /* 3D GLOBE CANVAS */
@@ -1442,6 +1612,13 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     console.error(err);
   }
 });
+function toggleNav() {
+  document.getElementById("side-nav").classList.toggle("active");
+}
+
+function closeNav() {
+  document.getElementById("side-nav").classList.remove("active");
+}
 </script>
 </body>
 </html>
