@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interactive World Map</title>
+
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #020810;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<script>
+
+// ===== YEARS =====
+const years = [2018, 2019, 2020, 2021, 2022];
+
+// ===== COUNTRIES =====
+const iso = ["IND", "USA", "CHN", "FRA", "BRA"];
+
+// ===== MULTI-METRIC DATA STRUCTURE =====
+const data = {
+  2018: {
+    GDP: [2000, 60000, 10000, 42000, 9000],
+    Poverty: [22, 12, 15, 8, 28]
+  },
+  2019: {
+    GDP: [2100, 61000, 10500, 43000, 9200],
+    Poverty: [21, 11, 14, 7, 27]
+  },
+  2020: {
+    GDP: [1900, 58000, 9800, 40000, 8800],
+    Poverty: [25, 13, 16, 9, 30]
+  },
+  2021: {
+    GDP: [2200, 63000, 11000, 45000, 9500],
+    Poverty: [20, 10, 13, 6, 26]
+  },
+  2022: {
+    GDP: [2400, 65000, 11500, 47000, 9800],
+    Poverty: [18, 9, 12, 5, 24]
+  }
+};
+
+let currentYear = 2022;
+let currentMetric = "GDP";
+
+const colorScale = [
+  [0, "#00f5ff"],
+  [0.2, "#00ff9f"],
+  [0.4, "#aaff00"],
+  [0.6, "#ffd500"],
+  [0.8, "#ff7a00"],
+  [1, "#ff003c"]
+];
+
+function getTrace(year, metric) {
+  return {
+    type: "choropleth",
+    locations: iso,
+    z: data[year][metric],
+    locationmode: "ISO-3",
+    colorscale: colorScale,
+    zmin: 0,
+    zmax: Math.max(...Object.values(data).flatMap(y => y[metric])),
+    marker: {line: {color: "rgba(0,255,255,0.3)", width: 0.5}},
+    colorbar: {title: metric},
+    hovertemplate: "%{location}<br>" + metric + ": %{z}<extra></extra>"
+  };
+}
+
+const layout = {
+  paper_bgcolor: "#020810",
+  plot_bgcolor: "#020810",
+  margin: {l: 0, r: 0, t: 40, b: 0},
+
+  geo: {
+    projection: {type: "natural earth", scale: 1.2},
+    showframe: false,
+    showcountries: true,
+    showcoastlines: true,
+    bgcolor: "#020810",
+    center: {lat: 20, lon: 0}
+  },
+
+  title: {
+    text: "World Map",
+    font: {color: "white"}
+  },
+
+  updatemenus: [
+    {
+      buttons: years.map(y => ({
+        label: String(y),
+        method: "update",
+        args: [
+          {z: [data[y][currentMetric]]},
+          {title: currentMetric + " - " + y}
+        ]
+      })),
+      direction: "down",
+      x: 0.02,
+      y: 1.15,
+      bgcolor: "rgba(20,20,40,0.9)",
+      font: {color: "white"}
+    },
+
+    {
+      buttons: ["GDP", "Poverty"].map(m => ({
+        label: m,
+        method: "update",
+        args: [
+          {z: [data[currentYear][m]]},
+          {title: m + " - " + currentYear, "colorbar.title": m}
+        ]
+      })),
+      direction: "down",
+      x: 0.25,
+      y: 1.15,
+      bgcolor: "rgba(20,20,40,0.9)",
+      font: {color: "white"}
+    }
+  ]
+};
+
+Plotly.newPlot("map", [getTrace(currentYear, currentMetric)], layout, {
+  responsive: true,
+  displayModeBar: false
+});
+
+</script>
+
+</body>
+</html>
