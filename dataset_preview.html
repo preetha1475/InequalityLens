@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+    background: #020810;
+    color: white;
+    font-family: Arial;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.data-table th {
+    background: rgba(0,198,255,0.2);
+}
+</style>
+</head>
+<body>
+
+<h2>Dataset Preview</h2>
+
+<table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ISO3</th>
+      <th>Year</th>
+      <th>Population</th>
+      <th>GDP_per_Capita_PPP</th>
+      <th>Gini_Index</th>
+      <th>Bottom40_Share</th>
+      <th>Top10_Share</th>
+      <th>Palma_Ratio</th>
+      <th>Median_Income_Daily_PPP</th>
+      <th>Poverty_Rate</th>
+      <th>Urban_Population_Percent</th>
+      <th>Unemployment_Rate</th>
+      <th>Inflation_Rate</th>
+      <th>Govt_Spending_Percent_GDP</th>
+      <th>Country</th>
+      <th>ISO2</th>
+      <th>Region</th>
+      <th>Income_Group</th>
+      <th>Data_Type</th>
+      <th>Gini_Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AGO</td>
+      <td>2000</td>
+      <td>16194869.00</td>
+      <td>6796.406340</td>
+      <td>0.519451</td>
+      <td>0.110408</td>
+      <td>0.401682</td>
+      <td>3.638158</td>
+      <td>5.300380</td>
+      <td>27.0000</td>
+      <td>50.507065</td>
+      <td>16.64600</td>
+      <td>324.996872</td>
+      <td>14.270049</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Observed</td>
+      <td>Very High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2001</td>
+      <td>16867842.25</td>
+      <td>7338.693637</td>
+      <td>0.507914</td>
+      <td>0.115418</td>
+      <td>0.391849</td>
+      <td>3.395030</td>
+      <td>5.304602</td>
+      <td>26.3875</td>
+      <td>51.516829</td>
+      <td>16.58425</td>
+      <td>285.931741</td>
+      <td>14.761421</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>Very High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2002</td>
+      <td>17540815.50</td>
+      <td>7880.980935</td>
+      <td>0.496377</td>
+      <td>0.120429</td>
+      <td>0.382016</td>
+      <td>3.172133</td>
+      <td>5.308825</td>
+      <td>25.7750</td>
+      <td>52.526593</td>
+      <td>16.52250</td>
+      <td>246.866611</td>
+      <td>15.252794</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2003</td>
+      <td>18213788.75</td>
+      <td>8423.268232</td>
+      <td>0.484840</td>
+      <td>0.125439</td>
+      <td>0.372182</td>
+      <td>2.967041</td>
+      <td>5.313047</td>
+      <td>25.1625</td>
+      <td>53.536356</td>
+      <td>16.46075</td>
+      <td>207.801481</td>
+      <td>15.744166</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2004</td>
+      <td>18886762.00</td>
+      <td>8965.555530</td>
+      <td>0.473303</td>
+      <td>0.130449</td>
+      <td>0.362349</td>
+      <td>2.777704</td>
+      <td>5.317269</td>
+      <td>24.5500</td>
+      <td>54.546120</td>
+      <td>16.39900</td>
+      <td>168.736350</td>
+      <td>16.235539</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2005</td>
+      <td>19559735.25</td>
+      <td>9507.842828</td>
+      <td>0.461766</td>
+      <td>0.135459</td>
+      <td>0.352516</td>
+      <td>2.602372</td>
+      <td>5.321491</td>
+      <td>23.9375</td>
+      <td>55.555884</td>
+      <td>16.33725</td>
+      <td>129.671220</td>
+      <td>16.726911</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2006</td>
+      <td>20232708.50</td>
+      <td>10050.130125</td>
+      <td>0.450229</td>
+      <td>0.140470</td>
+      <td>0.342683</td>
+      <td>2.439549</td>
+      <td>5.325713</td>
+      <td>23.3250</td>
+      <td>56.565647</td>
+      <td>16.27550</td>
+      <td>90.606090</td>
+      <td>17.218284</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2007</td>
+      <td>20905681.75</td>
+      <td>10592.417422</td>
+      <td>0.438692</td>
+      <td>0.145480</td>
+      <td>0.332850</td>
+      <td>2.287940</td>
+      <td>5.329936</td>
+      <td>22.7125</td>
+      <td>57.575411</td>
+      <td>16.21375</td>
+      <td>51.540959</td>
+      <td>17.709656</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2008</td>
+      <td>21578655.00</td>
+      <td>11134.704720</td>
+      <td>0.427155</td>
+      <td>0.150490</td>
+      <td>0.323016</td>
+      <td>2.146427</td>
+      <td>5.334158</td>
+      <td>22.1000</td>
+      <td>58.585175</td>
+      <td>16.15200</td>
+      <td>12.475829</td>
+      <td>18.201028</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Observed</td>
+      <td>High Inequality</td>
+    </tr>
+    <tr>
+      <td>AGO</td>
+      <td>2009</td>
+      <td>22550505.00</td>
+      <td>11021.328686</td>
+      <td>0.435704</td>
+      <td>0.146881</td>
+      <td>0.330337</td>
+      <td>2.249011</td>
+      <td>5.188693</td>
+      <td>23.8200</td>
+      <td>59.313978</td>
+      <td>16.19700</td>
+      <td>13.191140</td>
+      <td>17.414832</td>
+      <td>Angola</td>
+      <td>AO</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Lower middle income</td>
+      <td>Interpolated</td>
+      <td>High Inequality</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
