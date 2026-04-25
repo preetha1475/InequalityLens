@@ -52,7 +52,7 @@ html { scroll-behavior: smooth; }
 /* Section Setup */
 .section {
   min-height: auto;
-  padding: 140px 10%;
+  padding: 120px 5%;
   position: relative;
   z-index: 2;
   border-top: 1px solid var(--glass-border);
@@ -149,7 +149,7 @@ html { scroll-behavior: smooth; }
 .top-bar {
   position: fixed;
   top: 0; left: 0; width: 100%;
-  padding: 10px 8px%;
+  padding: 10px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -509,7 +509,13 @@ html { scroll-behavior: smooth; }
 /* Responsive Setup */
 @media (max-width: 992px) {
   .about-wrapper { grid-template-columns: 1fr; }
-  .top-nav { display: none; }
+   .top-nav {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
   .section { padding: 100px 5%; }
   .hero-left h1 { font-size: 3rem; }
   #chat-window { width: calc(100% - 60px); }
