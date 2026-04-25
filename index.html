@@ -677,6 +677,136 @@ tr:hover {
   color: var(--color-mint);
   margin-bottom: 10px;
 }
+/* ===== MOBILE FIRST IMPROVEMENTS ===== */
+
+/* Make everything flexible */
+img, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix chat window for small screens */
+@media (max-width: 600px) {
+  #chat-window {
+    width: 95%;
+    height: 70vh;
+    right: 10px;
+    bottom: 80px;
+  }
+
+  #chat-messages {
+    padding: 10px;
+  }
+}
+  #chatbot-launcher {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* NAVBAR → collapse */
+@media (max-width: 768px) {
+  .top-nav {
+    gap: 15px;
+    overflow-x: auto;
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 768px) {
+  .about-cards {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* HERO SECTION */
+@media (max-width: 768px) {
+  #home {
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ABOUT SECTION */
+@media (max-width: 768px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-text {
+    padding: 20px;
+  }
+}
+
+/* BUTTONS STACK */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  #home {
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+}
+/* GLASS CONTAINER HEIGHT FIX */
+@media (max-width: 768px) {
+  .glass-container {
+  height: clamp(300px, 60vh, 800px);
+}
+  
+}
+
+/* CONTACT FORM */
+@media (max-width: 600px) {
+  #connect form {
+    padding: 10px;
+  }
+}
+
+/* STATS STACK */
+@media (max-width: 600px) {
+  .stats {
+    flex-direction: column;
+  }
+}
+
+/* COLUMN CARDS */
+@media (max-width: 600px) {
+  .column-cards {
+    grid-template-columns: 1fr;
+  }
+}@media (max-width: 768px) {
+  .section {
+    padding: 80px 20px;
+  }
+}
 </style>
 </head>
 
